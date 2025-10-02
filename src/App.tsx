@@ -155,7 +155,17 @@ function HomePage() {
           
           {/* Container com proporção 9:16 */}
           <div className="relative w-full aspect-[9/16] bg-gray-100 rounded-lg shadow-lg overflow-hidden border border-gray-200">
-            <vturb-smartplayer id="vid-68dc58fd8498d2097f8f0dc8" style={{ display: 'block', margin: '0 auto', width: '100%', maxWidth: '400px' }}></vturb-smartplayer>
+            {/* Placeholder content */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 bg-gray-300 rounded-full flex items-center justify-center">
+                  <Play className="w-8 h-8 text-gray-600 ml-1" />
+                </div>
+                <p className="text-gray-500 text-sm font-medium">
+                  {customizationData.videoPlaceholderText}
+                </p>
+              </div>
+            </div>
           </div>
           
           {/* Audio warning */}
