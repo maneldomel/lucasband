@@ -65,10 +65,10 @@ const DTCBlock: React.FC<DTCBlockProps> = ({ onMount, customImages, customChecko
   };
 
   return (
-    <div ref={dtcRef} className="bg-gray-50 py-12">
+    <div ref={dtcRef} className="bg-white py-12">
       <div className="max-w-4xl mx-auto px-4">
         <div className="text-center space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">
+          <h2 className="text-3xl font-bold text-red-900">
             Transform Your Life Today
           </h2>
           
