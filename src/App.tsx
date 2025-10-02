@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { Play, Volume2 } from 'lucide-react';
+import { Volume2 } from 'lucide-react';
 import DTCBlock from './components/DTCBlock';
 import HamburgerMenu from './components/HamburgerMenu';
 import CustomizationPanel from './components/CustomizationPanel';
@@ -153,19 +153,21 @@ function HomePage() {
             {customizationData.headline}
           </h1>
           
-          {/* Container com proporção 9:16 */}
-          <div className="relative w-full aspect-[9/16] bg-gray-100 rounded-lg shadow-lg overflow-hidden border border-gray-200">
-            {/* Placeholder content */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 bg-gray-300 rounded-full flex items-center justify-center">
-                  <Play className="w-8 h-8 text-gray-600 ml-1" />
-                </div>
-                <p className="text-gray-500 text-sm font-medium">
-                  {customizationData.videoPlaceholderText}
-                </p>
-              </div>
-            </div>
+          {/* vturb Smart Player */}
+          <div className="relative w-full">
+            <div
+              dangerouslySetInnerHTML={{
+                __html: `
+                  <vturb-smartplayer id="vid-68dc58fd8498d2097f8f0dc8" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>
+                  <script type="text/javascript">
+                    var s=document.createElement("script");
+                    s.src="https://scripts.converteai.net/3f23e442-6aa5-435d-8dd7-0d30b567dc31/players/68dc58fd8498d2097f8f0dc8/v4/player.js";
+                    s.async=true;
+                    document.head.appendChild(s);
+                  </script>
+                `
+              }}
+            />
           </div>
           
           {/* Audio warning */}
