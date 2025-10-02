@@ -1,0 +1,47 @@
+{
+  "title": "Transforme Sua Vida Hoje",
+  "description": "Descubra o segredo que está mudando a vida de milhares de pessoas",
+  "poster": "https://images.pexels.com/photos/3938023/pexels-photo-3938023.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "sources": [
+    {
+      "src": "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "src": "https://sample-videos.com/zip/10/webm/SampleVideo_1280x720_1mb.webm",
+      "type": "video/webm"
+    }
+  ],
+  "tracks": [
+    {
+      "kind": "subtitles",
+      "src": "https://exemplo.com/legendas-pt.vtt",
+      "srclang": "pt",
+      "label": "Português",
+      "default": true
+    }
+  ],
+  "duration": 300,
+  "chapters": [
+    {
+      "title": "Introdução",
+      "start": 0,
+      "end": 60
+    },
+    {
+      "title": "O Problema",
+      "start": 60,
+      "end": 120
+    },
+    {
+      "title": "A Solução",
+      "start": 120,
+      "end": 240
+    },
+    {
+      "title": "Call to Action",
+      "start": 240,
+      "end": 300
+    }
+  ]
+}
