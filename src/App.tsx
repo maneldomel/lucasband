@@ -155,7 +155,9 @@ function HomePage() {
           
           {/* Container com proporção 9:16 */}
           <div className="relative w-full aspect-[9/16] bg-gray-100 rounded-lg shadow-lg overflow-hidden border border-gray-200">
-            <vturb-smartplayer id="vid-68dc58fd8498d2097f8f0dc8" style={{ display: 'block', margin: '0 auto', width: '100%', maxWidth: '400px' }}></vturb-smartplayer>
+            <div className="absolute inset-0">
+              <vturb-smartplayer id="vid-68dc58fd8498d2097f8f0dc8" style={{ display: 'block', margin: '0 auto', width: '100%', height: '100%' }}></vturb-smartplayer>
+            </div>
           </div>
           
           {/* Audio warning */}
