@@ -7,6 +7,19 @@ const Presell: React.FC = () => {
   const [urlParams] = React.useState<UTMParams>(getAllParams());
   const [showDTC, setShowDTC] = React.useState(false);
 
+  React.useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://scripts.converteai.net/3f23e442-6aa5-435d-8dd7-0d30b567dc31/players/68dc58fd8498d2097f8f0dc8/v4/player.js';
+    script.async = true;
+    document.head.appendChild(script);
+
+    return () => {
+      if (script.parentNode) {
+        script.parentNode.removeChild(script);
+      }
+    };
+  }, []);
+
   const handleToggleDTC = (show: boolean) => {
     setShowDTC(show);
   };
@@ -97,15 +110,14 @@ const Presell: React.FC = () => {
             </div>
           </div>
 
-          {/* Featured Image */}
+          {/* Video Player */}
           <div className="mb-8">
-            <img 
-              src="https://images.pexels.com/photos/3938023/pexels-photo-3938023.jpeg?auto=compress&cs=tinysrgb&w=1200" 
-              alt="Researchers in laboratory" 
-              className="w-full h-64 md:h-96 object-cover rounded-lg"
-            />
-            <p className="text-sm text-gray-500 mt-2 italic">
-              University researchers during the studies that led to the discovery
+            <div
+              id="vid-68dc58fd8498d2097f8f0dc8"
+              style={{ display: 'block', margin: '0 auto', width: '100%', maxWidth: '800px' }}
+            ></div>
+            <p className="text-sm text-gray-500 mt-4 italic text-center">
+              Watch: Dr. Ricardo Santos explains the revolutionary discovery
             </p>
           </div>
 
