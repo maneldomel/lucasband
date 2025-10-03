@@ -57,10 +57,10 @@ function HomePage() {
     // Capture URL parameters on app load
     const params = getAllParams();
     setUrlParams(params);
-    
+
     // Store parameters for persistence across pages
     storeParams(params);
-    
+
     // Load customization data from localStorage
     const savedCustomization = localStorage.getItem('pageCustomization');
     if (savedCustomization) {
@@ -70,10 +70,16 @@ function HomePage() {
         console.warn('Failed to load customization data:', error);
       }
     }
-    
+
     // Log captured parameters for debugging
     console.log('Captured URL Parameters:', params);
-    
+
+    // Load vturb video player script
+    const script = document.createElement('script');
+    script.src = 'https://scripts.converteai.net/3f23e442-6aa5-435d-8dd7-0d30b567dc31/players/68dc58fd8498d2097f8f0dc8/v4/player.js';
+    script.async = true;
+    document.head.appendChild(script);
+
     // Preload DTC images immediately
     const preloadImages = () => {
       const imageUrls = [
@@ -89,12 +95,17 @@ function HomePage() {
     };
 
     preloadImages();
-    
+
     const timer = setTimeout(() => {
       setShowDTC(true);
-    }, 10000); // 10 segundos
+    }, 10000);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      if (script.parentNode) {
+        script.parentNode.removeChild(script);
+      }
+    };
   }, []);
 
   const handleDTCMount = () => {
@@ -153,19 +164,12 @@ function HomePage() {
             {customizationData.headline}
           </h1>
           
-          {/* Container com proporção 9:16 */}
-          <div className="relative w-full aspect-[9/16] bg-gray-100 rounded-lg shadow-lg overflow-hidden border border-gray-200">
-            {/* Placeholder content */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 bg-gray-300 rounded-full flex items-center justify-center">
-                  <Play className="w-8 h-8 text-gray-600 ml-1" />
-                </div>
-                <p className="text-gray-500 text-sm font-medium">
-                  {customizationData.videoPlaceholderText}
-                </p>
-              </div>
-            </div>
+          {/* Video Container */}
+          <div className="relative w-full">
+            <div
+              id="vid-68dc58fd8498d2097f8f0dc8"
+              style={{ display: 'block', margin: '0 auto', width: '100%', maxWidth: '100%' }}
+            ></div>
           </div>
           
           {/* Audio warning */}
