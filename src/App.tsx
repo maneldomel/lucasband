@@ -165,7 +165,7 @@ function HomePage() {
           </h1>
           
           {/* Video Container */}
-          <div className="relative w-full">
+          <div className="relative w-full rounded-lg overflow-hidden">
             <div
               id="vid-68dc58fd8498d2097f8f0dc8"
               style={{ display: 'block', margin: '0 auto', width: '100%', maxWidth: '100%' }}
