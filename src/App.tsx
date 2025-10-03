@@ -74,12 +74,6 @@ function HomePage() {
     // Log captured parameters for debugging
     console.log('Captured URL Parameters:', params);
 
-    // Load vturb video player script
-    const script = document.createElement('script');
-    script.src = 'https://scripts.converteai.net/3f23e442-6aa5-435d-8dd7-0d30b567dc31/players/68dc58fd8498d2097f8f0dc8/v4/player.js';
-    script.async = true;
-    document.head.appendChild(script);
-
     // Preload DTC images immediately
     const preloadImages = () => {
       const imageUrls = [
@@ -102,10 +96,32 @@ function HomePage() {
 
     return () => {
       clearTimeout(timer);
-      if (script.parentNode) {
-        script.parentNode.removeChild(script);
-      }
     };
+  }, []);
+
+  useEffect(() => {
+    const loadScript = () => {
+      const existingScript = document.querySelector('script[src*="converteai.net"]');
+      if (existingScript) {
+        existingScript.remove();
+      }
+
+      const script = document.createElement('script');
+      script.src = 'https://scripts.converteai.net/3f23e442-6aa5-435d-8dd7-0d30b567dc31/players/68dc58fd8498d2097f8f0dc8/v4/player.js';
+      script.async = true;
+      script.type = 'text/javascript';
+      document.head.appendChild(script);
+
+      return () => {
+        if (script.parentNode) {
+          script.parentNode.removeChild(script);
+        }
+      };
+    };
+
+    const timer = setTimeout(loadScript, 100);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const handleDTCMount = () => {
